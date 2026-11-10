@@ -1,0 +1,18 @@
+[project]
+name = "oam-eoapi-stats"
+version = "0.0.0"
+description = "Lightweight statistics service for the OpenAerialMap eoAPI catalog"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Development Seed" }]
+requires-python = ">=3.11"
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "pytest>=8",
+]
+
+[build-system]
+requires = ["uv_build>=0.9,<0.10"]
+build-backend = "uv_build"
