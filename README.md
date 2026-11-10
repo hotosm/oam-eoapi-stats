@@ -5,6 +5,19 @@ Lightweight statistics service for the OpenAerialMap eoAPI catalog: scene counts
 > [!WARNING]
 > This project is in early development. The API is not stable yet.
 
+## Installation
+
+```bash
+uv add oam-eoapi-stats
+```
+
+## Development
+
+```bash
+uv sync
+uv run pytest
+```
+
 ## License
 
 [MIT](LICENSE)
