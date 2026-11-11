@@ -38,10 +38,15 @@ class Settings:
         return (f"under_{cm[0]}cm", *between, f"over_{cm[-1]}cm")
 
     @property
-    def conninfo(self) -> str:
-        return (
-            f"host={self.db_host} port={self.db_port} user={self.db_user} password={self.db_password} dbname={self.db_name}"
-        )
+    def connect_kwargs(self) -> dict[str, str]:
+        # Keyword arguments rather than a conninfo string, so passwords with spaces or quotes need no escaping.
+        return {
+            "host": self.db_host,
+            "port": self.db_port,
+            "user": self.db_user,
+            "password": self.db_password,
+            "dbname": self.db_name,
+        }
 
 
 def _cm(metres: float) -> str:
