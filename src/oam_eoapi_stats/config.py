@@ -118,9 +118,7 @@ def load_settings(env: Mapping[str, str]) -> Settings:
         excluded_collections=excluded,
         gsd_class_bounds=bounds,
         max_gsd_m=_group_floats("MAX_GSD_M", env.get("MAX_GSD_M", "hosted=5,federated=50")),
-        max_item_area_km2=_group_floats(
-            "MAX_ITEM_AREA_KM2", env.get("MAX_ITEM_AREA_KM2", "hosted=10000,federated=50000")
-        ),
+        max_item_area_km2=_group_floats("MAX_ITEM_AREA_KM2", env.get("MAX_ITEM_AREA_KM2", "hosted=10000,federated=50000")),
         default_platform=_pairs(
             "DEFAULT_PLATFORM",
             env.get(
