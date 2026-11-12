@@ -1,6 +1,6 @@
 [project]
 name = "oam-eoapi-stats"
-version = "0.0.0"
+version = "0.1.0"
 description = "Lightweight statistics service for the OpenAerialMap eoAPI catalog"
 readme = "README.md"
 license = "MIT"
