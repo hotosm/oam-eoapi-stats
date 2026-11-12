@@ -16,6 +16,7 @@ uv add oam-eoapi-stats
 ```bash
 uv sync
 uv run pytest
+uv run pre-commit install
 ```
 
 ## License
