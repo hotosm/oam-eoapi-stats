@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.1.1](https://github.com/hotosm/oam-eoapi-stats/compare/oam-eoapi-stats-v0.1.0...oam-eoapi-stats-v0.1.1) (2026-11-12)
+
+
+### Build System
+
+* run container as numeric user 999 ([6ed8c5e](https://github.com/hotosm/oam-eoapi-stats/commit/6ed8c5e0c870973f84345a8de24da4032cbdc2f9))
+
+
+### CI/CD
+
+* publish release images to GHCR ([d2a9ef5](https://github.com/hotosm/oam-eoapi-stats/commit/d2a9ef57a3a0221a77e857fd96a47f5570b830ad))
+* push main-branch images to GHCR ([b4bc058](https://github.com/hotosm/oam-eoapi-stats/commit/b4bc05845231947c5e083d8304c26901bde73c46))
+
 ## 0.1.0 (2026-11-12)
 
 
