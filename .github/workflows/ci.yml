@@ -33,3 +33,33 @@ jobs:
           provenance: false
           cache-from: type=gha
           cache-to: type=gha,mode=max
+
+  integration:
+    name: Integration test (pgstac)
+    runs-on: ubuntu-latest
+    services:
+      pgstac:
+        image: ghcr.io/stac-utils/pgstac:v0.10.1
+        env:
+          POSTGRES_USER: username
+          POSTGRES_PASSWORD: password
+          POSTGRES_DB: postgis
+          PGUSER: username
+          PGPASSWORD: password
+          PGDATABASE: postgis
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "psql -tAc 'SELECT pgstac.get_version()'"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 30
+    env:
+      PGSTAC_TEST_DSN: postgresql://username:password@localhost:5432/postgis
+    steps:
+      - uses: actions/checkout@v7
+      - uses: astral-sh/setup-uv@v7
+        with:
+          enable-cache: true
+      - run: uv sync --locked
+      - run: uv run pytest tests/integration -v
