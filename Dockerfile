@@ -2,7 +2,7 @@ FROM python:3.13-slim-bookworm
 
 COPY --from=ghcr.io/astral-sh/uv:0.9.18 /uv /uvx /bin/
 
-LABEL org.opencontainers.image.source="https://github.com/hotosm/oam-eoapi-stats/"
+LABEL org.opencontainers.image.source="https://github.com/hotosm/oam-eoapi-stats"
 
 ENV PYTHONUNBUFFERED=1 \
     UV_COMPILE_BYTECODE=1 \
@@ -22,8 +22,10 @@ COPY src /code/src
 RUN --mount=type=cache,target=/root/.cache/uv \
     uv sync --frozen --no-dev --no-editable
 
-RUN useradd --system --create-home appuser
-USER appuser
+# Numeric UID/GID so Kubernetes runAsNonRoot can verify the user isn't root.
+RUN groupadd --system --gid 999 appuser \
+ && useradd --system --uid 999 --gid 999 --create-home appuser
+USER 999:999
 
 EXPOSE 8000
 CMD ["uvicorn", "oam_eoapi_stats.main:app", "--host", "0.0.0.0", "--port", "8000"]
